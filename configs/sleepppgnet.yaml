@@ -1,0 +1,24 @@
+# SleepPPG-Net baseline - fixed architecture, so there is no model section
+data:
+  ppg_file: "${DATA_DIR}/mesa_processed/mesa_ppg_with_labels.h5"
+  index_file: "${DATA_DIR}/mesa_processed/mesa_subject_index.h5"
+  num_workers: 4
+
+training:
+  batch_size: 1
+  num_epochs: 60
+  learning_rate: 0.0001
+  weight_decay: 0.00001
+  patience: 15
+  num_runs: 1
+  optimizer: adamw
+  scheduler: cosine
+
+output:
+  save_dir: "${OUTPUT_DIR}/models"
+  save_frequency: 5
+
+gpu:
+  memory_fraction: 0.9
+
+use_amp: true

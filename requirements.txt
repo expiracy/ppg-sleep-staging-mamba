@@ -1,0 +1,25 @@
+# Two things are deliberately not listed here, see README "Setup":
+#   - PyTorch: install the build that matches your CUDA toolkit first
+#   - causal-conv1d and mamba-ssm: their setup needs torch importable at build
+#     time, so install them after this file with --no-build-isolation
+
+# Scientific computing
+numpy>=1.24
+scipy>=1.10
+scikit-learn>=1.3
+pandas>=2.0
+pyarrow
+
+# Data extraction and storage
+pyedflib>=0.1.34
+h5py>=3.9
+
+# Training utilities
+pyyaml>=6.0
+tqdm>=4.65
+tensorboard
+
+# Plots written by the trainers and transfer-learning tool
+matplotlib>=3.7
+seaborn>=0.12
+

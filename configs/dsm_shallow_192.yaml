@@ -1,0 +1,40 @@
+# DS-M[192, Shallow] - 3 fusion blocks, d_model=192
+data:
+  ppg_file: "${DATA_DIR}/mesa_processed/mesa_ppg_with_labels.h5"
+  index_file: "${DATA_DIR}/mesa_processed/mesa_subject_index.h5"
+  num_workers: 4
+
+training:
+  batch_size: 1
+  num_epochs: 60
+  learning_rate: 0.0001
+  weight_decay: 0.00001
+  patience: 15
+  num_runs: 1
+  optimizer: adamw
+  scheduler: cosine
+
+model:
+  d_model: 192
+  n_fusion_blocks: 3
+  d_state: 16
+  d_conv: 4
+  expand: 2
+  dropout: 0.2
+  fusion_ffn_expand: 2
+  noise_config:
+    noise_level: 0.1
+    drift_amplitude: 0.1
+    drift_frequency: 0.1
+    spike_probability: 0.01
+    spike_amplitude: 0.5
+
+
+output:
+  save_dir: "${OUTPUT_DIR}/models"
+  save_frequency: 5
+
+gpu:
+  memory_fraction: 0.9
+
+use_amp: true

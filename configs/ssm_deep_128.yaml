@@ -1,0 +1,33 @@
+# SS-M[128, Deep] - 9 mamba blocks, d_model=128
+data:
+  ppg_file: "${DATA_DIR}/mesa_processed/mesa_ppg_with_labels.h5"
+  index_file: "${DATA_DIR}/mesa_processed/mesa_subject_index.h5"
+  num_workers: 4
+
+training:
+  batch_size: 1
+  num_epochs: 60
+  learning_rate: 0.0001
+  weight_decay: 0.00001
+  patience: 15
+  num_runs: 1
+  optimizer: adamw
+  scheduler: cosine
+
+model:
+  d_model: 128
+  n_mamba_blocks: 9
+  d_state: 16
+  d_conv: 4
+  expand: 2
+  dropout: 0.2
+
+
+output:
+  save_dir: "${OUTPUT_DIR}/models"
+  save_frequency: 5
+
+gpu:
+  memory_fraction: 0.9
+
+use_amp: true
